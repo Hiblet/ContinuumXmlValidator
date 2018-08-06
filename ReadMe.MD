@@ -70,6 +70,13 @@ Steve Hibbert (steve at Continuum dot je), October 2017 (www.continuum.je)
 This code is the IP of Continuum Jersey.
 
 
+## Updates
+
+### V 1.0.1 : Alpha Release.
+
+### V 1.0.2 : Fix for XML Config names.
+
+
 
 ## Credits and Acknowledgements
 

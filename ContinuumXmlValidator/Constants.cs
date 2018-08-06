@@ -9,10 +9,10 @@ namespace ContinuumXmlValidator
     public class Constants
     {
         // Keys for XML data storage
-        public static string DATAFIELDKEY = "ContinuumXmlValidatorDataField"; 
-        public static string SCHEMAFIELDKEY = "ContinuumXmlValidatorSchemaField";
+        public static string DATAFIELDKEY = "DataField"; 
+        public static string SCHEMAFIELDKEY = "SchemaField";
 
-        public static string OUTPUTFIELDKEY = "ContinuumXmlValidatorOutputField";  // Output
+        public static string OUTPUTFIELDKEY = "OutputField";  // Output
 
 
         // Default Values
