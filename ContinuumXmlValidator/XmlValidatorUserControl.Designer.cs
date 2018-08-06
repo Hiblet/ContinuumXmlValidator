@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelHeader = new System.Windows.Forms.Label();
             this.labelVersionCode = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelXmlData = new System.Windows.Forms.Label();
             this.comboBoxDataField = new System.Windows.Forms.ComboBox();
+            this.labelXmlData = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.labelSchemaField = new System.Windows.Forms.Label();
             this.comboBoxSchemaField = new System.Windows.Forms.ComboBox();
+            this.labelSchemaField = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelOutputField = new System.Windows.Forms.Label();
             this.textBoxOutputField = new System.Windows.Forms.TextBox();
+            this.labelOutputField = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -55,6 +55,15 @@
             this.panel1.Size = new System.Drawing.Size(300, 50);
             this.panel1.TabIndex = 0;
             // 
+            // labelVersionCode
+            // 
+            this.labelVersionCode.AutoSize = true;
+            this.labelVersionCode.Location = new System.Drawing.Point(143, 21);
+            this.labelVersionCode.Name = "labelVersionCode";
+            this.labelVersionCode.Size = new System.Drawing.Size(46, 13);
+            this.labelVersionCode.TabIndex = 1;
+            this.labelVersionCode.Text = "(v 1.0.2)";
+            // 
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
@@ -65,15 +74,6 @@
             this.labelHeader.TabIndex = 0;
             this.labelHeader.Text = "XML Validator";
             // 
-            // labelVersionCode
-            // 
-            this.labelVersionCode.AutoSize = true;
-            this.labelVersionCode.Location = new System.Drawing.Point(143, 21);
-            this.labelVersionCode.Name = "labelVersionCode";
-            this.labelVersionCode.Size = new System.Drawing.Size(46, 13);
-            this.labelVersionCode.TabIndex = 1;
-            this.labelVersionCode.Text = "(v 1.0.1)";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.comboBoxDataField);
@@ -82,6 +82,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 50);
             this.panel2.TabIndex = 1;
+            // 
+            // comboBoxDataField
+            // 
+            this.comboBoxDataField.FormattingEnabled = true;
+            this.comboBoxDataField.Location = new System.Drawing.Point(107, 15);
+            this.comboBoxDataField.Name = "comboBoxDataField";
+            this.comboBoxDataField.Size = new System.Drawing.Size(180, 21);
+            this.comboBoxDataField.TabIndex = 1;
             // 
             // labelXmlData
             // 
@@ -92,14 +100,6 @@
             this.labelXmlData.TabIndex = 0;
             this.labelXmlData.Text = "XML Field:";
             // 
-            // comboBoxDataField
-            // 
-            this.comboBoxDataField.FormattingEnabled = true;
-            this.comboBoxDataField.Location = new System.Drawing.Point(107, 15);
-            this.comboBoxDataField.Name = "comboBoxDataField";
-            this.comboBoxDataField.Size = new System.Drawing.Size(180, 21);
-            this.comboBoxDataField.TabIndex = 1;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.comboBoxSchemaField);
@@ -108,6 +108,14 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 50);
             this.panel3.TabIndex = 2;
+            // 
+            // comboBoxSchemaField
+            // 
+            this.comboBoxSchemaField.FormattingEnabled = true;
+            this.comboBoxSchemaField.Location = new System.Drawing.Point(107, 15);
+            this.comboBoxSchemaField.Name = "comboBoxSchemaField";
+            this.comboBoxSchemaField.Size = new System.Drawing.Size(180, 21);
+            this.comboBoxSchemaField.TabIndex = 1;
             // 
             // labelSchemaField
             // 
@@ -118,14 +126,6 @@
             this.labelSchemaField.TabIndex = 0;
             this.labelSchemaField.Text = "Schema Field:";
             // 
-            // comboBoxSchemaField
-            // 
-            this.comboBoxSchemaField.FormattingEnabled = true;
-            this.comboBoxSchemaField.Location = new System.Drawing.Point(107, 15);
-            this.comboBoxSchemaField.Name = "comboBoxSchemaField";
-            this.comboBoxSchemaField.Size = new System.Drawing.Size(180, 21);
-            this.comboBoxSchemaField.TabIndex = 1;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.textBoxOutputField);
@@ -135,6 +135,14 @@
             this.panel4.Size = new System.Drawing.Size(300, 50);
             this.panel4.TabIndex = 3;
             // 
+            // textBoxOutputField
+            // 
+            this.textBoxOutputField.Location = new System.Drawing.Point(107, 15);
+            this.textBoxOutputField.Name = "textBoxOutputField";
+            this.textBoxOutputField.Size = new System.Drawing.Size(180, 20);
+            this.textBoxOutputField.TabIndex = 1;
+            this.textBoxOutputField.Text = "XmlErrors";
+            // 
             // labelOutputField
             // 
             this.labelOutputField.AutoSize = true;
@@ -143,14 +151,6 @@
             this.labelOutputField.Size = new System.Drawing.Size(67, 13);
             this.labelOutputField.TabIndex = 0;
             this.labelOutputField.Text = "Output Field:";
-            // 
-            // textBoxOutputField
-            // 
-            this.textBoxOutputField.Location = new System.Drawing.Point(107, 15);
-            this.textBoxOutputField.Name = "textBoxOutputField";
-            this.textBoxOutputField.Size = new System.Drawing.Size(180, 20);
-            this.textBoxOutputField.TabIndex = 1;
-            this.textBoxOutputField.Text = "XmlErrors";
             // 
             // XmlValidatorUserControl
             // 
