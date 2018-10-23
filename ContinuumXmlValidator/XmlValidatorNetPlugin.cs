@@ -24,6 +24,8 @@ namespace ContinuumXmlValidator
         private RecordInfo _recordInfoIn;
         private RecordInfo _recordInfoOut;
 
+        private RecordCopier _recordCopier;
+
         // App Specific Variables
         private string _dataField = Constants.DEFAULTDATAFIELD;
         private string _schemaField = Constants.DEFAULTSCHEMAFIELD;
@@ -84,7 +86,7 @@ namespace ContinuumXmlValidator
         public bool II_Init(RecordInfo recordInfo)
         {
             _recordInfoIn = recordInfo;
-            prepRecordInfoOut(); // This allows zero record run to succeed and fixes problem with downstream tool complaining about a stream not being initialized.
+            prep(); // This allows zero record run to succeed and fixes problem with downstream tool complaining about a stream not being initialized.
             return true;
         }
 
@@ -107,14 +109,13 @@ namespace ContinuumXmlValidator
 
         public bool II_PushRecord(RecordData recordDataIn)
         {
-            prepRecordInfoOut();
-
             // Prepare the output
             AlteryxRecordInfoNet.Record recordOut = _recordInfoOut.CreateRecord();
             recordOut.Reset();
 
             // Transfer existing data
-            copyRecordData(recordDataIn, recordOut);
+            //copyRecordData(recordDataIn, recordOut);
+            _recordCopier.Copy(recordOut, recordDataIn);
 
             // Collect data from fields
             string data = getFieldBaseStringData(_dataField, recordDataIn);
@@ -177,14 +178,33 @@ namespace ContinuumXmlValidator
             }
         }
 
-        private void prepRecordInfoOut()
+        private void prep()
         {
-            if (_recordInfoOut == null)
+            // Exit if already done (safety)
+            if (_recordInfoOut != null)
+                return;
+
+            _recordInfoOut = new AlteryxRecordInfoNet.RecordInfo();
+
+            populateRecordInfoOut();
+
+            _recordCopier = new RecordCopier(_recordInfoOut, _recordInfoIn, true);
+
+            uint countFields = _recordInfoIn.NumFields();
+            for (int i = 0; i < countFields; ++i)
             {
-                // Prep the output once
-                populateRecordInfoOut();
-                _outputHelper.Init(_recordInfoOut, "Output", null, _xmlProperties);
+                var fieldName = _recordInfoIn[i].GetFieldName();
+
+                var newFieldNum = _recordInfoOut.GetFieldNum(fieldName, false);
+                if (newFieldNum == -1)
+                    continue;
+
+                _recordCopier.Add(newFieldNum, i);
             }
+
+            _recordCopier.DoneAdding();
+
+            _outputHelper.Init(_recordInfoOut, "Output", null, _xmlProperties);
         }
 
         private void populateRecordInfoOut()
@@ -203,31 +223,6 @@ namespace ContinuumXmlValidator
             _recordInfoOut.AddField(_outputField, FieldType.E_FT_String, Constants.OUTPUTFIELDSIZE, 0, "", "");
         }
 
-        private void copyRecordData(RecordData recordDataIn, Record recordOut)
-        {
-            uint countFields = _recordInfoIn.NumFields();
-            for (int i = 0; i < countFields; ++i)
-            {
-                FieldBase fbIn = _recordInfoIn[i];
-                FieldBase fbOut = _recordInfoOut[i];
-
-                // Point a fieldbase reference to the record out item.
-                string fbData = "";
-                try
-                {
-                    fbData = fbIn.GetAsString(recordDataIn) ?? "";
-                }
-                catch (NullReferenceException)
-                {
-                    // If there is no data, catch and write out an empty string
-                    fbData = "";
-                }
-                finally
-                {
-                    fbOut.SetFromString(recordOut, fbData);
-                }
-            }
-        }
 
         private string getFieldBaseStringData(string fieldName, RecordData recordDataIn)
         {

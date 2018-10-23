@@ -76,8 +76,10 @@ This code is the IP of Continuum Jersey.
 
 ### V 1.0.2 : Fix for XML Config names.
 
+### V 1.0.3 : Record copy process now tolerates non-string types, like Blob.
 
 
 ## Credits and Acknowledgements
 
  - StackOverflow; For catching me when I fall.
+ - James Dunkerly, Alteryx ACE, for invaluable help over time.
